@@ -1,0 +1,204 @@
+﻿@model BlogViewModel
+@{
+    ViewData["Title"] = Model.BlogType == BlogType.Story ? "Câu chuyện" : "Lịch trình";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section StyleSheets {
+    <link rel="stylesheet" type="text/css" href="~/assets/styles/detail_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/styles/detail_responsive.css">
+}
+<div class="home">
+    <div class="home_background parallax-window" data-parallax="scroll" data-image-src="../../assets/images/blog_background.jpg"></div>
+    <div class="home_content">
+        <div class="home_title">@ViewData["Title"]</div>
+    </div>
+</div>
+
+<div class="blog">
+    <div class="container">
+        <div class="row">
+
+            <!-- Blog Content -->
+
+            <div class="col-lg-8">
+
+                <div class="blog_post_container">
+
+                    <!-- Blog Post -->
+
+                    <div class="blog_post">
+                        @*<div class="blog_post_image">
+                            <img src="../../assets/images/blog_1.jpg" alt="https://unsplash.com/anniespratt">
+                            <div class="blog_post_date d-flex flex-column align-items-center justify-content-center">
+                                <div class="blog_post_day">@Model.Time</div>
+                            </div>
+                        </div>*@
+                        <div class="blog_post_meta">
+                            <ul>
+                                <li class="blog_post_meta_item"><a href="">đăng bởi @Model.Author<b></b></a></li>
+                                <li class="blog_post_meta_item">
+                                    @for (int i = 0; i < Model.Places.Count; i++)
+                                    {
+                                        if (i == Model.Places.Count - 1)
+                                        {
+                                             <a href="">@($"{Model.Places[i].Name}")</a>
+                                        }
+                                        else
+                                        {
+                                              <a href="">@($"{Model.Places[i].Name}, ")</a>
+                                        }
+                                    }
+                                </li>
+                                @*<li class="blog_post_meta_item"><a href="">3 Comments</a></li>*@
+                            </ul>
+                        </div>
+                        <div class="blog_post_title">@Model.Title</div>
+                        <div class="blog_post_text">
+                            @Html.Raw(HttpUtility.HtmlDecode(Model.Content))
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Blog Sidebar -->
+
+            <div class="col-lg-4 sidebar_col">
+
+                @if (Model.BlogType == BlogType.Schedule)
+    {
+
+            <!-- Sidebar Archives -->
+            <div class="sidebar_search">
+                <div class="widget_illdy_person">
+                    <div class="person clearfix" data-person-color="#f18b6d">
+                        <div class="person-image">
+                            <img src="https://cdn.colorlib.com/illdy/wp-content/themes/illdy/layout/images/front-page/front-page-team-1.jpg" alt="Mark Lawrance" title="Mark Lawrance">
+                        </div>
+                        <!--/.person-image-->
+                        <div class="person-content">
+                            <h6>Mr Nguyen</h6>
+                            <p class="person-position" style="color: rgb(241, 139, 109);">Tour guide</p>
+                            <p>Năng động, vui vẻ, thích phiêu lưu.</p>
+                            <ul class="person-content-social clearfix">
+                                <li>
+                                    <a href="#" title="Facebook" target="_blank" rel="nofollow" style="border-color: rgb(241, 139, 109); color: rgb(241, 139, 109);">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" title="Twitter" style="border-color: rgb(241, 139, 109); color: rgb(241, 139, 109);">
+                                        <i class="fa fa-twitter" target="_blank" rel="nofollow"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" title="LinkedIn" style="border-color: rgb(241, 139, 109); color: rgb(241, 139, 109);">
+                                        <i class="fa fa-linkedin" target="_blank" rel="nofollow"></i>
+                                    </a>
+                                </li>
+                            </ul><!--/.person-content-social.clearfix-->
+                        </div><!--/.person-content-->
+                    </div><!--/.person.clearfix-->
+                </div>
+            </div>
+
+            <!-- Sidebar Search -->
+            <div class="sidebar_archives banner-right">
+                <div class="sidebar_title">Bạn có muốn đặt một chuyến tương tự?</div><br />
+                <form class="form-wrap">
+                    <input type="text" class="form-control" name="email" placeholder="Email " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email '">
+                    <input type="text" class="form-control" name="name" placeholder="Tên đầy đủ " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tên đầy đủ '">
+                    <input type="text" class="form-control" name="phone" placeholder="Số điện thoại " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Số điện thoại '">
+                    <input type="text" class="form-control date-picker hasDatepicker" name="departDate" placeholder="Ngày khởi hành " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ngày khởi hành '" id="dp1538955775755">
+                    <input type="text" class="form-control" name="departCity" placeholder="Nơi khởi hành " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nơi khởi hành '">
+                    <input type="text" class="form-control" name="destination" placeholder="Nơi đến " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nơi đến '">
+                    <input type="number" min="1" class="form-control" name="budget" placeholder="Khoản tiền cho từng người (đồng) " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Khoản tiền cho từng người (đồng) '">
+                    <select class="form-control" placeholder="Nơi đến ">
+                        <option label="Loại khách sạn" value="" selected="" disabled="" style="display:none">Loại khách sạn</option>
+                        <option>2 sao</option>
+                        <option>3 sao</option>
+                        <option>4 sao</option>
+                        <option>5 sao</option>
+                        <option>Không cần khách sạn</option>
+                    </select>
+                    <div class="form-control form-control-noborder text-left">
+                        Đã đặt chuyến bay? <input type="radio" name="FlightsBooked" value="1" /> Có <input type="radio" name="FlightsBooked" value="2" /> Không
+                    </div>
+                    <a href="#" class="primary-btn text-uppercase">Đặt lịch trình</a>
+                </form>
+            </div>
+
+            <!-- Sidebar Latest Posts -->
+
+            <div class="sidebar_latest_posts">
+                <div class="sidebar_title">Quảng cáo</div>
+                <div class="latest_posts_container">
+                    <ul>
+
+                        <!-- Latest Post -->
+                        <li class="latest_post clearfix">
+                            <div class="latest_post_image">
+                                <a href="#"><img src="../../assets/images/latest_1.jpg" alt=""></a>
+                            </div>
+                            <div class="latest_post_content">
+                                <div class="latest_post_title trans_200"><a href="#">A simple blog post</a></div>
+                                <div class="latest_post_meta">
+                                    <div class="latest_post_author trans_200"><a href="#">by Jane Smith</a></div>
+                                    <div class="latest_post_date trans_200"><a href="#">Aug 25, 2016</a></div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Latest Post -->
+                        <li class="latest_post clearfix">
+                            <div class="latest_post_image">
+                                <a href="#"><img src="../../assets/images/latest_2.jpg" alt=""></a>
+                            </div>
+                            <div class="latest_post_content">
+                                <div class="latest_post_title trans_200"><a href="#">Dream destination for you</a></div>
+                                <div class="latest_post_meta">
+                                    <div class="latest_post_author trans_200"><a href="#">by Jane Smith</a></div>
+                                    <div class="latest_post_date trans_200"><a href="#">Aug 25, 2016</a></div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Latest Post -->
+                        <li class="latest_post clearfix">
+                            <div class="latest_post_image">
+                                <a href="#"><img src="../../assets/images/latest_3.jpg" alt=""></a>
+                            </div>
+                            <div class="latest_post_content">
+                                <div class="latest_post_title trans_200"><a href="#">Tips to travel light</a></div>
+                                <div class="latest_post_meta">
+                                    <div class="latest_post_author trans_200"><a href="#">by Jane Smith</a></div>
+                                    <div class="latest_post_date trans_200"><a href="#">Aug 25, 2016</a></div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Latest Post -->
+                        <li class="latest_post clearfix">
+                            <div class="latest_post_image">
+                                <a href="#"><img src="../../assets/images/latest_4.jpg" alt=""></a>
+                            </div>
+                            <div class="latest_post_content">
+                                <div class="latest_post_title trans_200"><a href="#">How to pick your vacation</a></div>
+                                <div class="latest_post_meta">
+                                    <div class="latest_post_author trans_200"><a href="#">by Jane Smith</a></div>
+                                    <div class="latest_post_date trans_200"><a href="#">Aug 25, 2016</a></div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+}

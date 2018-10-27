@@ -1,0 +1,228 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>aspnet-TripViet-B7E695E8-9D46-48AE-9190-F9F69F922A2E</UserSecretsId>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="automapper" Version="7.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\.gitkeep" />
+    <None Include="wwwroot\assets\fonts\beyond_the_mountains.otf" />
+    <None Include="wwwroot\assets\fonts\beyond_the_mountains.ttf" />
+    <None Include="wwwroot\assets\fonts\vnf-abrilfatface-regular.ttf" />
+    <None Include="wwwroot\assets\images\about_background.jpg" />
+    <None Include="wwwroot\assets\images\add.jpg" />
+    <None Include="wwwroot\assets\images\backpack.png" />
+    <None Include="wwwroot\assets\images\bicycle.png" />
+    <None Include="wwwroot\assets\images\blog_1.jpg" />
+    <None Include="wwwroot\assets\images\blog_2.jpg" />
+    <None Include="wwwroot\assets\images\blog_3.jpg" />
+    <None Include="wwwroot\assets\images\blog_background.jpg" />
+    <None Include="wwwroot\assets\images\bus.png" />
+    <None Include="wwwroot\assets\images\compass.png" />
+    <None Include="wwwroot\assets\images\contact.png" />
+    <None Include="wwwroot\assets\images\contact_background.jpg" />
+    <None Include="wwwroot\assets\images\cruise.png" />
+    <None Include="wwwroot\assets\images\cta.jpg" />
+    <None Include="wwwroot\assets\images\departure.png" />
+    <None Include="wwwroot\assets\images\diving.png" />
+    <None Include="wwwroot\assets\images\dropdown.png" />
+    <None Include="wwwroot\assets\images\elements_background.jpg" />
+    <None Include="wwwroot\assets\images\footer_blog_1.jpg" />
+    <None Include="wwwroot\assets\images\footer_blog_2.jpg" />
+    <None Include="wwwroot\assets\images\footer_blog_3.jpg" />
+    <None Include="wwwroot\assets\images\gallery_1.jpg" />
+    <None Include="wwwroot\assets\images\gallery_2.jpg" />
+    <None Include="wwwroot\assets\images\gallery_3.jpg" />
+    <None Include="wwwroot\assets\images\gallery_4.jpg" />
+    <None Include="wwwroot\assets\images\gallery_5.jpg" />
+    <None Include="wwwroot\assets\images\gallery_6.jpg" />
+    <None Include="wwwroot\assets\images\home_slider.jpg" />
+    <None Include="wwwroot\assets\images\icon_1.png" />
+    <None Include="wwwroot\assets\images\icon_2.png" />
+    <None Include="wwwroot\assets\images\icon_3.png" />
+    <None Include="wwwroot\assets\images\intro.png" />
+    <None Include="wwwroot\assets\images\intro_1.jpg" />
+    <None Include="wwwroot\assets\images\intro_2.jpg" />
+    <None Include="wwwroot\assets\images\intro_3.jpg" />
+    <None Include="wwwroot\assets\images\island.png" />
+    <None Include="wwwroot\assets\images\island_t.png" />
+    <None Include="wwwroot\assets\images\kayak.png" />
+    <None Include="wwwroot\assets\images\latest_1.jpg" />
+    <None Include="wwwroot\assets\images\latest_2.jpg" />
+    <None Include="wwwroot\assets\images\latest_3.jpg" />
+    <None Include="wwwroot\assets\images\latest_4.jpg" />
+    <None Include="wwwroot\assets\images\listing_1.jpg" />
+    <None Include="wwwroot\assets\images\listing_2.jpg" />
+    <None Include="wwwroot\assets\images\listing_3.jpg" />
+    <None Include="wwwroot\assets\images\listing_4.jpg" />
+    <None Include="wwwroot\assets\images\listing_5.jpg" />
+    <None Include="wwwroot\assets\images\listing_6.jpg" />
+    <None Include="wwwroot\assets\images\listing_7.jpg" />
+    <None Include="wwwroot\assets\images\listing_8.jpg" />
+    <None Include="wwwroot\assets\images\listing_9.jpg" />
+    <None Include="wwwroot\assets\images\listing_gallery_1.jpg" />
+    <None Include="wwwroot\assets\images\listing_hotel.jpg" />
+    <None Include="wwwroot\assets\images\listing_thumb_1.jpg" />
+    <None Include="wwwroot\assets\images\listing_thumb_2.jpg" />
+    <None Include="wwwroot\assets\images\listing_thumb_3.jpg" />
+    <None Include="wwwroot\assets\images\listing_thumb_4.jpg" />
+    <None Include="wwwroot\assets\images\listing_thumb_5.jpg" />
+    <None Include="wwwroot\assets\images\listing_thumb_6.jpg" />
+    <None Include="wwwroot\assets\images\listing_thumb_7.jpg" />
+    <None Include="wwwroot\assets\images\listing_thumb_8.jpg" />
+    <None Include="wwwroot\assets\images\listing_thumb_9.jpg" />
+    <None Include="wwwroot\assets\images\logo.png" />
+    <None Include="wwwroot\assets\images\logo1.png" />
+    <None Include="wwwroot\assets\images\man.png" />
+    <None Include="wwwroot\assets\images\message.svg" />
+    <None Include="wwwroot\assets\images\milestone_1.png" />
+    <None Include="wwwroot\assets\images\milestone_2.png" />
+    <None Include="wwwroot\assets\images\milestone_3.png" />
+    <None Include="wwwroot\assets\images\milestone_4.png" />
+    <None Include="wwwroot\assets\images\nav_next.svg" />
+    <None Include="wwwroot\assets\images\nav_prev.svg" />
+    <None Include="wwwroot\assets\images\nav_rect.svg" />
+    <None Include="wwwroot\assets\images\next.png" />
+    <None Include="wwwroot\assets\images\offer_1.jpg" />
+    <None Include="wwwroot\assets\images\offer_2.jpg" />
+    <None Include="wwwroot\assets\images\offer_3.jpg" />
+    <None Include="wwwroot\assets\images\offer_4.jpg" />
+    <None Include="wwwroot\assets\images\offer_5.jpg" />
+    <None Include="wwwroot\assets\images\offer_6.jpg" />
+    <None Include="wwwroot\assets\images\offer_7.jpg" />
+    <None Include="wwwroot\assets\images\offer_8.jpg" />
+    <None Include="wwwroot\assets\images\phone-call.svg" />
+    <None Include="wwwroot\assets\images\placeholder.svg" />
+    <None Include="wwwroot\assets\images\planet-earth.svg" />
+    <None Include="wwwroot\assets\images\post.png" />
+    <None Include="wwwroot\assets\images\prev.png" />
+    <None Include="wwwroot\assets\images\review_1.jpg" />
+    <None Include="wwwroot\assets\images\review_2.jpg" />
+    <None Include="wwwroot\assets\images\room_1.jpg" />
+    <None Include="wwwroot\assets\images\room_2.jpg" />
+    <None Include="wwwroot\assets\images\sailboat.png" />
+    <None Include="wwwroot\assets\images\search.png" />
+    <None Include="wwwroot\assets\images\search.svg" />
+    <None Include="wwwroot\assets\images\single_background.jpg" />
+    <None Include="wwwroot\assets\images\stats_1.png" />
+    <None Include="wwwroot\assets\images\stats_2.png" />
+    <None Include="wwwroot\assets\images\stats_3.png" />
+    <None Include="wwwroot\assets\images\stats_4.png" />
+    <None Include="wwwroot\assets\images\suitcase.png" />
+    <None Include="wwwroot\assets\images\test_1.jpg" />
+    <None Include="wwwroot\assets\images\test_2.jpg" />
+    <None Include="wwwroot\assets\images\test_3.jpg" />
+    <None Include="wwwroot\assets\images\trend_1.png" />
+    <None Include="wwwroot\assets\images\trend_2.png" />
+    <None Include="wwwroot\assets\images\trend_3.png" />
+    <None Include="wwwroot\assets\images\trend_4.png" />
+    <None Include="wwwroot\assets\images\trend_5.png" />
+    <None Include="wwwroot\assets\images\trend_6.png" />
+    <None Include="wwwroot\assets\images\trend_7.png" />
+    <None Include="wwwroot\assets\images\trend_8.png" />
+    <None Include="wwwroot\assets\js\about_custom.js" />
+    <None Include="wwwroot\assets\js\blog_custom.js" />
+    <None Include="wwwroot\assets\js\contact_custom.js" />
+    <None Include="wwwroot\assets\js\custom.js" />
+    <None Include="wwwroot\assets\js\elements_custom.js" />
+    <None Include="wwwroot\assets\js\jquery-3.2.1.min.js" />
+    <None Include="wwwroot\assets\js\offers_custom.js" />
+    <None Include="wwwroot\assets\js\single_listing_custom.js" />
+    <None Include="wwwroot\assets\plugins\colorbox\colorbox.css" />
+    <None Include="wwwroot\assets\plugins\colorbox\images\border.png" />
+    <None Include="wwwroot\assets\plugins\colorbox\images\controls.png" />
+    <None Include="wwwroot\assets\plugins\colorbox\images\loading.gif" />
+    <None Include="wwwroot\assets\plugins\colorbox\images\loading_background.png" />
+    <None Include="wwwroot\assets\plugins\colorbox\images\overlay.png" />
+    <None Include="wwwroot\assets\plugins\colorbox\jquery.colorbox-min.js" />
+    <None Include="wwwroot\assets\plugins\easing\easing.js" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\css\font-awesome.css" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\less\animated.less" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\less\core.less" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\less\fixed-width.less" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\less\font-awesome.less" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\less\icons.less" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\less\larger.less" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\less\list.less" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\less\mixins.less" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\less\path.less" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\less\screen-reader.less" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\less\stacked.less" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\less\variables.less" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\scss\_animated.scss" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\scss\_core.scss" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\scss\_icons.scss" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\scss\_larger.scss" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\scss\_list.scss" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\scss\_mixins.scss" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\scss\_path.scss" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\scss\_stacked.scss" />
+    <None Include="wwwroot\assets\plugins\font-awesome-4.7.0\scss\_variables.scss" />
+    <None Include="wwwroot\assets\plugins\greensock\animation.gsap.min.js" />
+    <None Include="wwwroot\assets\plugins\greensock\ScrollToPlugin.min.js" />
+    <None Include="wwwroot\assets\plugins\greensock\TimelineMax.min.js" />
+    <None Include="wwwroot\assets\plugins\greensock\TweenMax.min.js" />
+    <None Include="wwwroot\assets\plugins\Isotope\isotope.pkgd.min.js" />
+    <None Include="wwwroot\assets\plugins\jquery-circle-progress-1.2.2\circle-progress.js" />
+    <None Include="wwwroot\assets\plugins\OwlCarousel2-2.2.1\ajax-loader.gif" />
+    <None Include="wwwroot\assets\plugins\OwlCarousel2-2.2.1\animate.css" />
+    <None Include="wwwroot\assets\plugins\OwlCarousel2-2.2.1\owl.carousel.css" />
+    <None Include="wwwroot\assets\plugins\OwlCarousel2-2.2.1\owl.carousel.js" />
+    <None Include="wwwroot\assets\plugins\OwlCarousel2-2.2.1\owl.theme.default.css" />
+    <None Include="wwwroot\assets\plugins\OwlCarousel2-2.2.1\owl.video.play.png" />
+    <None Include="wwwroot\assets\plugins\parallax-js-master\parallax.min.js" />
+    <None Include="wwwroot\assets\plugins\progressbar\progressbar.min.js" />
+    <None Include="wwwroot\assets\plugins\scrollmagic\ScrollMagic.min.js" />
+    <None Include="wwwroot\assets\styles\about_responsive.css" />
+    <None Include="wwwroot\assets\styles\about_styles.css" />
+    <None Include="wwwroot\assets\styles\detail_responsive.css" />
+    <None Include="wwwroot\assets\styles\detail_styles.css" />
+    <None Include="wwwroot\assets\styles\bootstrap4\bootstrap.min.css" />
+    <None Include="wwwroot\assets\styles\bootstrap4\bootstrap.min.js" />
+    <None Include="wwwroot\assets\styles\bootstrap4\popper.js" />
+    <None Include="wwwroot\assets\styles\contact_responsive.css" />
+    <None Include="wwwroot\assets\styles\elements_responsive.css" />
+    <None Include="wwwroot\assets\styles\elements_styles.css" />
+    <None Include="wwwroot\assets\styles\main_styles.css" />
+    <None Include="wwwroot\assets\styles\offers_responsive.css" />
+    <None Include="wwwroot\assets\styles\offers_styles.css" />
+    <None Include="wwwroot\assets\styles\responsive.css" />
+    <None Include="wwwroot\assets\styles\single_listing_responsive.css" />
+    <None Include="wwwroot\assets\styles\single_listing_styles.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+</Project>

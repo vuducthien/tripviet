@@ -1,0 +1,12 @@
+C:\Users\vuduc\Documents\Visual Studio 2017\Projects\TripViet\TripViet\bin\Debug\netcoreapp2.0\TripViet.deps.json
+C:\Users\vuduc\Documents\Visual Studio 2017\Projects\TripViet\TripViet\bin\Debug\netcoreapp2.0\TripViet.runtimeconfig.json
+C:\Users\vuduc\Documents\Visual Studio 2017\Projects\TripViet\TripViet\bin\Debug\netcoreapp2.0\TripViet.runtimeconfig.dev.json
+C:\Users\vuduc\Documents\Visual Studio 2017\Projects\TripViet\TripViet\bin\Debug\netcoreapp2.0\TripViet.dll
+C:\Users\vuduc\Documents\Visual Studio 2017\Projects\TripViet\TripViet\bin\Debug\netcoreapp2.0\TripViet.pdb
+C:\Users\vuduc\Documents\Visual Studio 2017\Projects\TripViet\TripViet\obj\Debug\netcoreapp2.0\TripViet.csproj.CoreCompileInputs.cache
+C:\Users\vuduc\Documents\Visual Studio 2017\Projects\TripViet\TripViet\obj\Debug\netcoreapp2.0\TripViet.AssemblyInfoInputs.cache
+C:\Users\vuduc\Documents\Visual Studio 2017\Projects\TripViet\TripViet\obj\Debug\netcoreapp2.0\TripViet.AssemblyInfo.cs
+C:\Users\vuduc\Documents\Visual Studio 2017\Projects\TripViet\TripViet\obj\Debug\netcoreapp2.0\TripViet.dll
+C:\Users\vuduc\Documents\Visual Studio 2017\Projects\TripViet\TripViet\obj\Debug\netcoreapp2.0\TripViet.pdb
+C:\Users\vuduc\Documents\Visual Studio 2017\Projects\TripViet\TripViet\obj\Debug\netcoreapp2.0\TripViet.csprojResolveAssemblyReference.cache
+C:\Users\vuduc\Documents\Visual Studio 2017\Projects\TripViet\TripViet\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

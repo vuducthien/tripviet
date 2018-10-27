@@ -1,0 +1,71 @@
+﻿@model BlogViewModel
+@{
+    ViewData["Title"] = Model.BlogType == BlogType.Story ? "Viết câu chuyện" : "Viết lịch trình";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section StyleSheets {
+    <link rel="stylesheet" type="text/css" href="~/assets/styles/writeblog.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/styles/contact_responsive.css">
+}
+<div class="home">
+    <div class="home_background parallax-window" data-parallax="scroll" data-image-src="../../assets/images/contact_background.jpg"></div>
+    <div class="home_content">
+        <div class="home_title">@ViewData["Title"]</div>
+    </div>
+</div>
+
+<div class="contact_form_section">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form method="post" id="my_form">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    @*<div class="writeblog_text">Thể loại</div>
+        <select id="blogtype" name="blogtype" asp-for="BlogType">
+            <option value="1">Viết câu chuyện</option>
+            <option value="2">Viết lịch trình</option>
+        </select>*@
+
+                    <div class="writeblog_text">Tiêu đề</div>
+                    <input type="text" class="writeblog_title" asp-for="Title" />
+
+                    <div class="writeblog_text">Bài viết</div>
+                    <textarea name="content" id="editor" asp-for="Content"></textarea>
+
+                    <div class="writeblog_text">Địa điểm</div>
+
+                    <div class="place_form">
+                        <div class="place_container">
+                            <div class="place_name_container"><img src="~/assets/images/logo30.png" alt="Trip Viet logo"><span class="place_name"></span></div>
+                            <input type="text" class="place_autocomplete" id="autocomplete_placeid" /><button type="button" class="place_remove btn btn-secondary"><i class="fa fa-trash"></i> Xóa</button>
+                            <input type="hidden" class="val_name" />
+                            <input type="hidden" class="val_formatted_address" />
+                            <input type="hidden" class="val_adr_address" />
+                            <input type="hidden" class="val_reference" />
+                            <input type="hidden" class="val_id" />
+                        </div>
+                    </div>
+                    <p id="place-error" class="text-danger" style="display:none">Vui lòng nhập địa điểm</p>
+                    <button type="button" class="place_add btn btn-secondary">
+                        <i class="fa fa-plus"></i>
+                        Thêm địa điểm
+                    </button>
+
+                    <input type="hidden" class="blog_type" value="@((int)Model.BlogType)" />
+                    <div class="common_buttons">
+                        <button type="button" class="btn btn-primary" id="blog_submit">Đăng bài</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.ckeditor.com/4.9.2/full-all/ckeditor.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=@OptionsApplicationConfiguration.Value.APIKey&libraries=places&sensor=false" type="text/javascript" async defer></script>
+    <script src="~/assets/js/custom/writeblog.js"></script>
+}
