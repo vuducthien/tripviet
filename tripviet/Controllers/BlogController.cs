@@ -8,9 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TripViet.Commons;
-using TripViet.Data;
 using TripViet.Domains;
-using TripViet.Models;
 using TripViet.Models.BlogViewModels;
 
 namespace TripViet.Controllers
@@ -20,15 +18,15 @@ namespace TripViet.Controllers
     public class BlogController : Controller
     {
         ITripVietContext _context;
-        private readonly UserManager<ApplicationUser> _userManager;
-        ApplicationDbContext _identityContext;
+        private readonly UserManager<User> _userManager;
+        ITripVietContext _tripVietContext;
         IMapper _mapper;
 
-        public BlogController(ITripVietContext context, UserManager<ApplicationUser> userManager, ApplicationDbContext identityContext, IMapper mapper)
+        public BlogController(ITripVietContext context, UserManager<User> userManager, ITripVietContext tripVietContext, IMapper mapper)
         {
             _context = context;
             _userManager = userManager;
-            _identityContext = identityContext;
+            _tripVietContext = tripVietContext;
             _mapper = mapper;
         }
 
@@ -73,13 +71,11 @@ namespace TripViet.Controllers
             {
                 var user = await _userManager.GetUserAsync(HttpContext.User);
                 var blog = _mapper.Map<Blog>(model);
-                blog.CreatedById = Guid.Parse(user.Id);
-                blog.UpdatedById = Guid.Parse(user.Id);
-                blog.CreatedDate = DateTime.Now;
-                blog.UpdatedDate = DateTime.Now;
+                blog.CreatedById = blog.UpdatedById = user.Id;
+                blog.CreatedDate = blog.UpdatedDate = DateTime.Now;
                 _context.Blogs.Add(blog);
                 _context.SaveChanges();
-                model.Author = _identityContext.Users.Where(x => x.Id == user.Id).Select(x => x.UserName).FirstOrDefault();
+                model.Author = _tripVietContext.Users.Where(x => x.Id == user.Id).Select(x => x.UserName).FirstOrDefault();
                 model.Time = blog.CreatedDate.ToString("dd/MM/yyyy");
                 return View("Detail", model);
             }
@@ -95,22 +91,22 @@ namespace TripViet.Controllers
         {
             var blog = _context.Blogs.Include(x => x.Places).FirstOrDefault(x => x.Id == id);
             var model = _mapper.Map<BlogViewModel>(blog);
-            model.Author = _identityContext.Users.Where(x => Guid.Parse(x.Id) == blog.CreatedById).Select(x => x.UserName).FirstOrDefault();
+            model.Author = _tripVietContext.Users.Where(x => x.Id == blog.CreatedById).Select(x => x.UserName).FirstOrDefault();
             model.Time = blog.CreatedDate.ToString("dd/MM/yyyy");
             return View(model);
         }
 
-        public async Task<IActionResult> GetInspiration()
+        public IActionResult GetInspiration()
         {
-            var users = _identityContext.Users.ToList();
+            var users = _tripVietContext.Users.ToList();
             var blogs = _context.Blogs.Where(x=>x.BlogType == BlogType.Story).OrderByDescending(c=>c.CreatedDate).Take(5).ToList();
             List<BlogViewModel> model = _mapper.Map<List<Blog>, List<BlogViewModel>>(blogs);
             return View(model);
         }
 
-        public async Task<IActionResult> GetConnection()
+        public IActionResult GetConnection()
         {
-            var users = _identityContext.Users.ToList();
+            var users = _tripVietContext.Users.ToList();
             var blogs = _context.Blogs.Where(x => x.BlogType == BlogType.Schedule).OrderByDescending(c => c.CreatedDate).Take(5).ToList();
             List<BlogViewModel> model = _mapper.Map<List<Blog>, List<BlogViewModel>>(blogs);
             return View(model);

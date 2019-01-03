@@ -398,5 +398,16 @@ $(document).ready(function()
 				}
 			});	
 		}
-	}
+    }
+
+
+    /*
+     
+     9. Custom
+     
+     */
 });
+
+function submitLogout() {
+    $('#logoutForm').submit();
+}

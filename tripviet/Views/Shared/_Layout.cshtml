@@ -1,5 +1,5 @@
-﻿@inject SignInManager<ApplicationUser> SignInManager
-@inject UserManager<ApplicationUser> UserManager
+﻿@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 @*{
     var service = Context.RequestServices.GetService(typeof(Microsoft.AspNetCore.Hosting.IHostingEnvironment)) as Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 }*@
@@ -130,6 +130,10 @@
 
 
 
+
+
+
+
 										</g>
 									</g>
                                 <g>
@@ -137,6 +141,10 @@
                                 <path class="mag_glass" fill="#FFFFFF" d="M6.057,505.942c4.038,4.039,9.332,6.058,14.625,6.058s10.587-2.019,14.625-6.058L171.268,369.98
 											c8.076-8.076,8.076-21.172,0-29.248c-8.076-8.078-21.172-8.078-29.249,0L6.057,476.693
 											C-2.019,484.77-2.019,497.865,6.057,505.942z" />
+
+
+
+
 
 
 
@@ -165,11 +173,23 @@
                 <div class="menu_close_container"><div class="menu_close"></div></div>
                 <div class="logo menu_logo"><a href="#"><img src="~/assets/images/logo.png" alt=""></a></div>
                 <ul>
-                    <li class="menu_item"><a href="#">home</a></li>
-                    <li class="menu_item"><a href="about.html">about us</a></li>
-                    <li class="menu_item"><a href="offers.html">offers</a></li>
-                    <li class="menu_item"><a href="blog.html">news</a></li>
-                    <li class="menu_item"><a href="contact.html">contact</a></li>
+                    <li class="menu_item"><a asp-area="" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+                    <li class="menu_item"><a href="">Điểm đến</a></li>
+                    <li class="menu_item"><a asp-area="" asp-controller="Blog" asp-action="GetInspiration">Lấy cảm hứng</a></li>
+                    <li class="menu_item"><a asp-area="" asp-controller="Blog" asp-action="GetConnection">Kết nối thổ địa</a></li>
+                    <li class="menu_item">&nbsp;</li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                <li class="menu_item border-top"><a asp-area="" asp-controller="Blog" asp-action="WriteBlog" asp-route-blogType="1">Viết câu chuyện</a></li>
+                <li class="menu_item"><a asp-area="" asp-controller="Blog" asp-action="WriteBlog" asp-route-blogType="2">Viết lịch trình</a></li>
+                <li class="menu_item">&nbsp;</li>
+                @*<li class="menu_item border-top"><a asp-area="" asp-controller="Home" asp-action="Profile" asp-route-id="@UserManager.GetUserId(User)">Trang cá nhân</a></li>*@
+                <li class="menu_item"><a href="#" onclick="return submitLogout()">Đăng xuất</a></li>
+                    }
+                    else
+                    {
+                <li class="menu_item border-top"><a asp-area="" asp-controller="Account" asp-action="Login">Đăng nhập</a></li>
+                    }
                 </ul>
             </div>
         </div>

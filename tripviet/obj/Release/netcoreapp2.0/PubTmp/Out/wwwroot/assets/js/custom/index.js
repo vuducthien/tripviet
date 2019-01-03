@@ -1,26 +1,14 @@
-﻿; (function () {
+﻿//$(document).ready(function () {
+//    $("#search-location").click(function () {
+//    });
+//});
 
-$(document).ready(function () {
-    $("#search-location").click(function () {
-        //searchPlaces();
-    });
-
-});
-
-//function searchPlaces() {
-//    $('#colorlib-hotel').css('display', 'block');
-//}
-
-
-}());
-
-//var uniquePlace = {};
 function initAutocomplete() {
     // Create the autocomplete object, restricting the search to geographical
     // location types.
     autocomplete = new google.maps.places.Autocomplete(
         // type {!HTMLInputElement} * /
-        (document.getElementById('search_input')),
+        document.getElementById('search_input'),
         { types: ['geocode'] });
 
     // When the user selects an address from the dropdown, populate the address
@@ -29,19 +17,20 @@ function initAutocomplete() {
         var place = autocomplete.getPlace();
         var searchText = '';
         for (var i = 0; i < place.address_components.length; i++) {
-            if (place.address_components[i].types[0] == 'administrative_area_level_2') {
+            if (place.address_components[i].types[0] === 'administrative_area_level_2') {
                 searchText = place.address_components[i].long_name;
                 break;
-            } if (place.address_components[i].types[0] == 'administrative_area_level_1') {
+            } if (place.address_components[i].types[0] === 'administrative_area_level_1') {
                 searchText = place.address_components[i].long_name;
                 break;
             }
-            if (place.address_components[i].types[0] == 'country') {
+            if (place.address_components[i].types[0] === 'country') {
                 searchText = place.address_components[i].long_name;
                 break;
             }
         }
 
+        var carousel = $('#colorlib-hotel .owl-carousel');
         //send ajax
         $.ajax({
             type: "POST",
@@ -52,14 +41,18 @@ function initAutocomplete() {
             error: function (xhr) {},
             success: function (data) {
                 if (data.length > 0) {
-                    $('#colorlib-hotel').css('display', 'block');
                     $('.search-no-found').css('display', 'none');
-                    var carousel = $('#colorlib-hotel .owl-carousel');
+                    $('#colorlib-hotel').css('display', 'block');
+                    //these 3 lines kill the owl, and returns the markup to the initial state
+                    carousel.trigger('destroy.owl.carousel');
+                    carousel.find('.owl-stage-outer').children().unwrap();
+                    carousel.removeClass("owl-center owl-hidden owl-loaded owl-drag owl-text-select-on");
                     carousel.html('');
+                    //carousel.html('');
                     for (var i = 0; i < data.length; i++) {
                         var placeName = '';
                         for (var j = 0; j < data[i].places.length; j++) {
-                            placeName += data[i].places[j].nonHtmlAddress + '<br/>'
+                            placeName += data[i].places[j].nonHtmlAddress + '<br/>';
                         }
                         var str = '<div class="item">'
                             + '<div class="hotel-entry">'
@@ -105,8 +98,9 @@ function initAutocomplete() {
                     });
                 }
                 else {
-                    $('#colorlib-hotel').css('display', 'none');
                     $('.search-no-found').css('display', 'block');
+                    $('#colorlib-hotel').css('display', 'none');
+                    carousel.addClass('owl-hidden');
                 }                
 
             }

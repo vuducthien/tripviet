@@ -35,7 +35,7 @@
                                         <img src="../../assets/images/logo.png" alt="Trip Viet image" />
                                         @blog.Title
                                     </a>
-                                    <div class="text-right">@blog.Places?.First().Name</div>
+                                    <div class="text-right">@blog.Places.FirstOrDefault()?.Name</div>
                                     <div class="text-right">Đăng bởi @blog.Author</div>
                                 </li>
                                 }
@@ -53,7 +53,7 @@
                                     <img src="../../assets/images/logo.png" alt="Trip Viet image" />
                                     @blog.Title
                                 </a>
-                                <div class="text-right">@blog.Places?.First().Name</div>
+                                <div class="text-right">@blog.Places.FirstOrDefault()?.Name</div>
                                 <div class="text-right">Đăng bởi @blog.Author</div>
                             </li>
 }
@@ -71,7 +71,7 @@
                                     <img src="../../assets/images/logo.png" alt="Trip Viet image" />
                                     @blog.Title
                                 </a>
-                                <div class="text-right">@blog.Places?.First().Name</div>
+                                <div class="text-right">@blog.Places.FirstOrDefault()?.Name</div>
                                 <div class="text-right">Đăng bởi @blog.Author</div>
                             </li>
 }
@@ -89,7 +89,7 @@
                                     <img src="../../assets/images/logo.png" alt="Trip Viet image" />
                                     @blog.Title
                                 </a>
-                                <div class="text-right">@blog.Places?.First().Name</div>
+                                <div class="text-right">@blog.Places.FirstOrDefault()?.Name</div>
                                 <div class="text-right">Đăng bởi @blog.Author</div>
                             </li>
 }

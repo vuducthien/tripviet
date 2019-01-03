@@ -2257,3 +2257,12 @@ a.genric-btn {
 .user_box_login .dropdown-menu {
     background-color: #350a4e;
 }
+
+
+
+
+/*  Custom */
+
+.border-top {
+    border-top:1px solid white;
+}

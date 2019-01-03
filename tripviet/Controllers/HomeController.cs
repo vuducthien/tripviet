@@ -6,9 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using TripViet.Commons;
-using TripViet.Data;
 using TripViet.Domains;
 using TripViet.Models;
 using TripViet.Models.BlogViewModels;
@@ -18,20 +16,20 @@ namespace TripViet.Controllers
     public class HomeController : Controller
     {
         ITripVietContext _context;
-        ApplicationDbContext _identityContext;
+        ITripVietContext _tripVietContext;
         IMapper _mapper;
-        private readonly UserManager<ApplicationUser> _userManager;
-        public HomeController(ITripVietContext context, UserManager<ApplicationUser> userManager, ApplicationDbContext identityContext, IMapper mapper)
+        private readonly UserManager<User> _userManager;
+        public HomeController(ITripVietContext context, UserManager<User> userManager, ITripVietContext tripVietContext, IMapper mapper)
         {
             _context = context;
-            _identityContext = identityContext;
+            _tripVietContext = tripVietContext;
             _mapper = mapper;
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var users = _identityContext.Users.ToList();
+            var users = _tripVietContext.Users.ToList();
             var stories = _context.Blogs.Where(x => x.BlogType == BlogType.Story).Include(x => x.Places).OrderByDescending(c => c.CreatedDate).Take(5).ToList();
             var schedules = _context.Blogs.Where(x => x.BlogType == BlogType.Schedule).Include(x => x.Places).OrderByDescending(c => c.CreatedDate).Take(5).ToList();
             var model = new List<BlogViewModel>();
@@ -42,6 +40,11 @@ namespace TripViet.Controllers
             return View(model);
         }
 
+        public IActionResult Profile(Guid id)
+        {
+            return View();
+        }
+
         [HttpPost]
         public JsonResult SearchPlace([FromBody] SearchViewModel model)
         {
@@ -50,14 +53,14 @@ namespace TripViet.Controllers
                         where p.NonHtmlAddress.Contains(model.Text)
                         select b;
             var blogs = query.Include(x => x.Places).Distinct().OrderBy(x => x.BlogType).ToList();
-            var authorIds = blogs.Select(x => x.CreatedById.ToString()).Distinct();
-            var authors = _identityContext.Users.Where(x => authorIds.Contains(x.Id)).Select(x => new { x.Id, x.UserName }).ToList();
+            var authorIds = blogs.Select(x => x.CreatedById).Distinct();
+            var authors = _tripVietContext.Users.Where(x => authorIds.Contains(x.Id)).Select(x => new { x.Id, x.UserName }).ToList();
 
             var result = _mapper.Map<List<Blog>, List<BlogViewModel>>(blogs);
             result.ForEach(x =>
             {
                 x.Content = x.Content.Length > 50 ? x.Content.Substring(0, 50) + "..." : x.Content;
-                x.Author = authors.Where(u => u.Id == x.CreatedById.ToString()).Select(u => u.UserName).FirstOrDefault();
+                x.Author = authors.Where(u => u.Id == x.CreatedById).Select(u => u.UserName).FirstOrDefault();
             });
             return Json(result);
         }
